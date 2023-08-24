@@ -1,16 +1,9 @@
-# inShare file sharing app apis
+# FileShareExpress file sharing app apis
 
-Rest api using Node, Express, Mongo.
-We will build rest api for a simple file sharing app. 
+Building the 'FileShareXpress' app involves creating APIs using Node.js, Express.js, and MongoDB. The project covers file upload using Multer, integrating nodemailer for email notifications through a free SMTP service, and implementing Google authentication and Passport authentication with JWT.
 
-![demo gif](https://github.com/ShivamJoker/GIF-Demos/raw/master/inshare%20demo.gif)
+'FileShareXpress' will be deployed on Heroku, providing a live server environment. The project also includes a scheduled script to automatically delete files older than 24 hours from storage. Users will receive email links for easy file downloads, enhancing the app's usability.
 
-### Frontend source code can be found on @ShivamJoker Github
-https://github.com/ShivamJoker/InShare
-
-
-## Installation 
-After download or clone run `npm install` OR `yarn install` to install all the dependancies.
-also do not forget to rename `.env.example` into `.env` an put all creadentials.
-
-🙏 If you find this repo helpful then don't forget to give a start ❇️ to this repository. :)
+## Project setup
+npm install
+npm dev

@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const File = require('../models/file');
+const { ensureAuthenticated } = require('../config/passport');
 
-router.get('/:uuid', async (req, res) => {
+router.get('/:uuid', ensureAuthenticated, async (req, res) => {
     try {
         const file = await File.findOne({ uuid: req.params.uuid });
         // Link expired

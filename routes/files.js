@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const File = require('../models/file');
 const { v4: uuidv4 } = require('uuid');
+const { ensureAuthenticated } = require('../config/passport');
 
 let storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/') ,
@@ -14,7 +15,7 @@ let storage = multer.diskStorage({
 
 let upload = multer({ storage, limits:{ fileSize: 1000000 * 100 }, }).single('myfile'); //100mb
 
-router.post('/', (req, res) => {
+router.post('/', ensureAuthenticated, (req, res) => {
     upload(req, res, async (err) => {
       if (err) {
         return res.status(500).send({ error: err.message });
@@ -30,7 +31,7 @@ router.post('/', (req, res) => {
       });
 });
 
-router.post('/send', async (req, res) => {
+router.post('/send', ensureAuthenticated, async (req, res) => {
   const { uuid, emailTo, expiresIn } = req.body;
   emailFrom = process.env.MAIL_USER
   console.log(req.body);
